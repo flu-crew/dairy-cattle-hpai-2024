@@ -15,6 +15,7 @@ If you have specific queries, please submit an issue in the git repo, and we wil
 ### Project structure ###
 See the respective README.txt files within the folders for details/instructions.
 - [figures](manuscript-figures/): PDF files of manuscript figures.
+- [supplemental](manuscript-supplemental/): PDF files of manuscript figures.
 - [transphylo](transphylo-analysis/): scripts and input data for TransPhylo analysis.
 - [treetime](treetime/): Input ML trees and treetime output.
 - [reassortment](reassortment-analysis/): Scripts and instructions for reproducing the for reassortment analysis with TreeSort.
