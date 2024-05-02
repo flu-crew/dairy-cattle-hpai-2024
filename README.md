@@ -1,7 +1,7 @@
 # Emergence and interstate spread of highly pathogenic avian influenza A (H5N1) in dairy cattle
 
 This repository will host scripts and describe how to reproduce the computational analysis in:
-*Nguyen, et al. **Emergence of highly pathogenic avian influenza A (H5N1) in dairy cattle**. https://www.biorxiv.org/content/10.1101/2024.05.01.591751v1*
+*Nguyen, et al. **Emergence and interstate spread of highly pathogenic avian influenza A (H5N1) in dairy cattle**. https://www.biorxiv.org/content/10.1101/2024.05.01.591751v1*
 
 This project is in active development. The paper is a preprint and has not been peer reviewed. 
 
