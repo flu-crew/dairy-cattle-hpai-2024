@@ -1,0 +1,12 @@
+#nexus
+begin sets;
+    charset PB2 = 1-2281;
+    charset PB1 = 2282-4568;
+    charset PA = 4569-6719;
+    charset HA = 6720-8423;
+    charset NP = 8424-9920;
+    charset NA = 9921-11330;
+    charset MP = 11331-12312;
+    charset NS = 12312-13150;
+    charpartition mine = GTR+F+R5:PB2, GTR+F+R5:PB1, GTR+F+R5:PA, GTR+F+R5:HA, GTR+F+R5:NP, GTR+F+R5:NA, GTR+F+R5:MP, GTR+F+R5:NS;
+end;
