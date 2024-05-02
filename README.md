@@ -7,7 +7,7 @@ This project is in active development. The paper is a preprint and has not been 
 
 Links and data are being uploaded as provenance is determined. We cannot publicly upload the genetic sequences from GISAID, but alignment files and xml files include accessions that may be downloaded.
 
-All other data has been deposited at NCBI Genbank with a listing of accessions provided as soon as they have been generated.
+**All other data has been deposited at NCBI Genbank with a listing of accessions provided as soon as they have been generated.**
 
 If you have specific queries, please submit an issue in the git repo, and we will address it as soon as we are able. Thank you.
 
@@ -15,7 +15,7 @@ If you have specific queries, please submit an issue in the git repo, and we wil
 ### Project structure ###
 See the respective README.txt files within the folders for details/instructions.
 - [figures](manuscript-figures/): PDF files of manuscript figures.
-- [supplemental](manuscript-supplemental/): PDF files of manuscript figures.
+- [supplemental](manuscript-supplemental/): PDF files and excel spreadsheets from the supplemental material
 - [transphylo](transphylo-analysis/): scripts and input data for TransPhylo analysis.
 - [treetime](treetime/): Input ML trees and treetime output.
 - [reassortment](reassortment-analysis/): Scripts and instructions for reproducing the for reassortment analysis with TreeSort.
