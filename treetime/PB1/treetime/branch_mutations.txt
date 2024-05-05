@@ -1,0 +1,1 @@
+node	state1	pos	state2
