@@ -18,7 +18,7 @@ See the respective README.txt files within the folders for details/instructions.
 - [supplemental](manuscript-supplemental/): PDF files and excel spreadsheets from the supplemental material
 - [transphylo](transphylo-analysis/): scripts and input data for TransPhylo analysis.
 - [treetime](treetime/): Input ML trees and treetime output.
-- [reassortment](reassortment-analysis/): Scripts and instructions for reproducing the for reassortment analysis with TreeSort.
+- [reassortment](reassortment-analysis/): Scripts and instructions for reproducing the reassortment analysis with TreeSort.
 - [tmrca](tmrca): BEAUTI xmls with sequence data removed, and annotated MCC trees.
 - [discrete-state](discrete-state/): BEAUTI xmls and ouytput used in SpreadD3.
 - [wgs-phylogenomics](wgs-phylogenomics/): Scripts and data for WGS B3.13 analysis (phylogenomic tMRCA + spillovers).
