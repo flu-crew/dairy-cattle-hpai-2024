@@ -1,5 +1,5 @@
 ### Reassortment analysis on H5N1 2.3.4.4b strains from the US, including the strains from the March-April 2024 outbreak in dairy cattle ###
-This analysis uses TreeSort: [https://github.com/flu-crew/TreeSort](!https://github.com/flu-crew/TreeSort).
+This analysis uses TreeSort: [https://github.com/flu-crew/TreeSort](https://github.com/flu-crew/TreeSort).
 
 #### File structure ####
 - treesort-analysis.log: a TreeSort-generated reassortment report.
@@ -20,5 +20,5 @@ This analysis uses TreeSort: [https://github.com/flu-crew/TreeSort](!https://git
 3. Root the HA tree by running `python treetime-root.py HA.iqtree.tre HA.final.aln`
 4. `mv HA.final.aln.rooted.tre HA.iqtree.rooted.tre`
 
-5. Install TreeSort from [https://github.com/flu-crew/TreeSort](!https://github.com/flu-crew/TreeSort).
+5. Install TreeSort from [https://github.com/flu-crew/TreeSort](https://github.com/flu-crew/TreeSort).
 6. Run `treesort -i descriptor_H5N1_HA.csv -o HA.annotated.treesort.d2.5.tre --dev 2.5`. TreeSort will identify reassortment events along the HA tree and will give a segment-by-segment report. The tree with reassortment annotations will be saved in `HA.annotated.treesort.d2.5.tre`. The TreeSort report and the annotated tree from this analysis are saved as `treesort-analysis.log` and `HA.annotated.treesort.d2.5.tre` respectively.
