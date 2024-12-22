@@ -1,17 +1,31 @@
 ### BEAST tMRCA analysis on H5N1 2.3.4.4b strains from the US, including the strains from the March-April 2024 outbreak in dairy cattle ###
-This analysis uses BEAST v1.10.4: [https://beast.community](https://beast.community).
+
+#### Datasets ####
+- To generate a reference dataset of relevant HPAI H5N1 strains, we queried GISAID for all H5 genomes with 8 complete gene segments available collected between the dates of January 01 2020 and March 29 2024 in the United States. This query provided 23,322 sequences from 2,915 genomes: we extracted the hemagglutinin (HA) gene sequence and aligned the data using MAFFT v7.526. We subsequently inferred a maximum likelihood phylogenetic tree with IQ-Tree v2.2.2 following automatic model selection. Based on this tree, we classified all data using a custom python clade identifier called GenoFLU (https://github.com/USDA-VS/GenoFLU) and filtered the data to only those strains from the HPAI clade 2.3.4.4b. We then removed identical HA sequences, ensuring that we retained the cattle strains that had been published in GISAID and the associated human case (A/Texas/37/2024, GISAID accession EPI_ISL_19027114). This process resulted in a reference gene dataset of 1393 strains.
+- For computational efficiency, these were subsampled using smot v.1.0.0 maintaining representation by sampling 20% of the tips within each monophyletic clade based on an HA gene phylogeny inferred using FastTree v2.1.11.
+- We used the resultant dataset of n=964 strains in maximum likelihood phylogenetic analyses.
+- For Bayesian analyses the n=1393 strains were subsampled using smot v1.0.0 to gain an HA dataset of n=587 tips; and subsampled using smot v1.0.0 to gain datasets for the remaining 7 genes (PB2, PB1, PA, NP, NA, MP, NS) of n=755 strains.
+- To infer the evolutionary rate of the cattle clade vs. across the entire tree, we extracted the monophyletic clade of cattle HA clade 2.3.4.4b genes with any host category (host) or cattle only (location).
+- Consequently, we used n=587 for the HA Bayesian analysis that was nested within n=755 strains for the PB2, PB1, PA, NP, NA, MP, NS gene Bayesian analysis, that was nested within n=964 strains that was used for the maximum likelihood analysis, that was nested in n=1393 representative HPAI H5N1 2.3.4.4b strains collected in the USA from 2020 to MArch 29, 2024.
+
+#### Analyses ####
+- The HA dataset included n=587 extracted using smot v1.0.0 from the representative dataset; the PB2, PB1, PA, NP, NA, MP, NS gene segment alignments included n=755 from the same representative dataset.
+- For the HA gene segment, we implemented a generalized time reversible (GTR) nucleotide substitution model with gamma-distributed site heterogeneity, an uncorrelated relaxed clock with lognormal distribution, and a Gaussian Markov random field (GMRF) Bayesian skyride with time aware-smoothing for the coalescent model. We enforced monophyly on the clade including cattle viruses and conducted six independent Markov chain Monte Carlo (MCMC) sampling runs with 100 million iterations with sampling every 10,000 iterations. For the extracted monophyletic clade of cattle HA genes (used to infer evolutionary rate of the HA gene), we conducted a separate analysis with the same parameters, deviating only by using 5 MCMC chains for 50 million iterations each, sampling parameters and trees every 5,000 iterations.
+- On the remaining 7 IAV gene segments: we implemented a generalized time reversible (GTR) nucleotide substitution model with gamma-distributed site heterogeneity, a strict molecular clock, and a Gaussian Markov random field (GMRF) Bayesian skyride with time aware-smoothing for the coalescent model. For these 7 genes, we ran 5 MCMC chains for 50 million iterations each, sampling parameters and trees every 5,000 iterations.
+- All results were analyzed using the GMRF skyride reconstruction in Tracer v1.7.2, convergence and mixing was assessed, and runs were combined to ensure an effective sample size of more than 200. A time-scaled maximum clade credibility (MCC) tree was generated using TreeAnnotator v1.8.4 using median node heights and 20 percent burn-in.
+
+#### General result ####
+- The time to the most recent common ancestor (TMRCA) for the HA segment estimated using Bayesian methods for the cattle clade was estimated as November 10, 2023 (95 percent HPD, October 4, 2023, to January 22, 2024).
+- The TMRCA estimated using Bayesian methods for the cattle group and the human virus was estimated as September 27, 2023 (95 percent HPD, August 18, 2023, to December 9, 2023). These two groups shared a TMRCA that was estimated as August 14, 2023 (95 percent HPD, July 23, 2023, to October 19, 2023).
+- The dates we inferred for the other genes (for the cattle clade) were as follows, and the MCC trees are provided: PB2 – October 4, 2023 (95 percent HPD, September 2, 2023, to November 28, 2023); PB1 – January 11, 2024 (95 percent HPD, December 20, 2023, to February 13, 2024); PA – February 13, 2024 (95 percent HPD, January 26, 2024, to February 28, 2024); HA - November 10, 2023 (95 percent HPD, October 4, 2023, to January 22, 2024); NP – February 9, 2024 (95 percent HPD, January 15, 2024, to February 28, 2024); NA – December 13, 2023 (95 percent HPD, October 15, 2023, to February 17, 2024); MP – January 11, 2024 (95 percent HPD, October 30, 2023, to February 28, 2024); NS – September 9, 2023 (95 percent HPD, August 3, 2023, to December 13, 2024)
+- The inferred evolutionary rate was 6.19x10-3 substitutions/site/year (95 percent highest posterior density (HPD), 5.21x10-3-7.19x10-3), and for the cattle clade the rate was 3.96x10-2 (95 percent HPD, 2.13x10-2-6.05x10-2).
+
+This analysis uses BEAST v1.10.4 and all it's tools: [https://beast.community](https://beast.community).
 
 #### File structure ####
+- if you note missing files, please email tavis.anderson@usda.gov or create an issue.
 - mcc-gtrg-ucld-gmrf-colored.tre: a time-scaled maximum clade credibility HA gene tree generated from this analysis.
 - mcc-gtrg-ucld-gmrf-colored.pruned.tre: a paraphyletically subsampled HA phylogenetic tree used in Fig-S2.
 - GISAID-HA-genes.txt: lists the GISAID EPI identifiers for the seqeuences used in this analysis.
 - r8-100-gtrg-ucld-gmrf-noEPI.xml: a non-functional xml file generated by BEAUTI v1.10.4. This file has the GISAID sequence data removed and will not work.
 - additional XML files are provided to calculate the evolutionary rate for the cattle only clade (exponential and a GMRF Bayesian skyride coalescent model)
-
-#### Step-by-step: ####
-
-1. Combine the GISAID sequences with the IRMA sequences from this analysis - genbank accessions pending.
-
-2. input into BEAUTI, parse the dates, and configure the analysis (GTR + gamma with estimated base frequencies; an uncorrelated relaxed lognormal clock; GMRF Bayesian Skyride with time aware smoothlng; uninformative priors; 100 million MCMC with sampling every 10,000)
-
-3. Analyses were run 5-8 times (50 million or 100 million, sampled to end with 10,000 states), and after inspection the logs and trees were combined (LogCombiner v1.10.4), and a single MCC was generated using TreeAnnotator v1.10.4.
